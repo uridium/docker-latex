@@ -22,4 +22,10 @@ or build an image from a Dockerfile:
 
 ### Usage
 
-    ./render.sh xelatex filename.tex
+Simply copy this repository to directory with tex files and run:
+
+    ./docker-latex/render.sh xelatex filename.tex
+
+Also, you might be tempted to add it as git submodule:
+
+    git submodule add git@github.com:uridium/docker-latex.git docker-latex

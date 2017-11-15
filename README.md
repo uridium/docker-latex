@@ -1,9 +1,9 @@
 Docker LaTeX
 --
 
-Container for building PDF files from LaTeX documents, based on [TeX Live](https://www.tug.org/texlive/).
+A trimmed down container for converting LaTeX documents to PDF files. It doesn't require `texlive-full`, but only a few packages.
 
-It's a trimmed down version of texlive-full, made of only few texlive packages.
+[TeX Live](https://www.tug.org/texlive/).
 
 ### Requirements
 
@@ -12,19 +12,21 @@ It's a trimmed down version of texlive-full, made of only few texlive packages.
 
 ### Install
 
-Pull an image from a registry:
+Run `./docker-latex/render.sh` and an image will be pulled automatically,
+
+or download an image from a registry:
 
     make pull
 
-or build an image from a Dockerfile:
+You can also build an image from a Dockerfile:
 
     make build
 
 ### Usage
 
-Simply copy this repository to directory with tex files and run:
+Simply copy this repository to a directory with tex files and run:
 
-    ./docker-latex/render.sh xelatex filename.tex
+    ./docker-latex/render.sh filename.tex
 
 Also, you might be tempted to add it as git submodule:
 

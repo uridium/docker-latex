@@ -1,9 +1,9 @@
 Docker LaTeX
 --
 
-A trimmed down container for converting LaTeX documents to PDF files. It doesn't require `texlive-full`, but only a few packages.
+A trimmed down container for converting LaTeX documents to PDF files. It doesn't use `texlive-full` package.
 
-[TeX Live](https://www.tug.org/texlive/).
+[TeX Live](https://www.tug.org/texlive/)
 
 ### Requirements
 
@@ -14,7 +14,7 @@ A trimmed down container for converting LaTeX documents to PDF files. It doesn't
 
 Run `./docker-latex/render.sh` and an image will be pulled automatically,
 
-or download an image from a registry:
+or download an image from a [registry](https://hub.docker.com/r/uridium/latex/):
 
     make pull
 

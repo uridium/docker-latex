@@ -3,7 +3,7 @@ FROM debian:stretch-slim
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update -qq \
-    && apt-get dist-upgrade -y \
+    && apt-get dist-upgrade -y -qq \
     && apt-get install -y --no-install-recommends \
         texlive \
         texlive-base \
@@ -16,7 +16,7 @@ RUN apt-get update -qq \
         texlive-latex-recommended \
         texlive-luatex \
         texlive-xetex \
-    && apt-get purge -y .*-doc$ \
+    && apt-get purge -y -qq ^tex.*-doc$ \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 

@@ -2,6 +2,8 @@ REPO = uridium/latex
 
 .PHONY: pull build clean
 
+default: build
+
 pull:
 	docker pull $(REPO)
 
@@ -10,5 +12,3 @@ build:
 
 clean:
 	docker rmi $(shell docker images $(REPO) -qa)
-
-default: build

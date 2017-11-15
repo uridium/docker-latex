@@ -21,3 +21,7 @@ RUN apt-get update -qq \
     && rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
 WORKDIR /docs
+
+ENTRYPOINT ["xelatex"]
+
+CMD ["--help"]

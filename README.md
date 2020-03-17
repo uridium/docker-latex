@@ -7,27 +7,23 @@ A trimmed down container for converting LaTeX documents to PDF files. It doesn't
 
 ### Requirements
 
-* docker-engine
+* docker
 * make
 
-### Install
+### Install/Usage
 
-Run `./docker-latex/render.sh` and an image will be pulled automatically,
+To generate a pdf file, copy this repository to a directory with tex files and run:
 
-or download an image from a [registry](https://hub.docker.com/r/uridium/latex/):
+    make f=filename.tex
+
+You might be tempted to add it as git submodule:
+
+    git submodule add git@github.com:uridium/docker-latex.git docker-latex
+
+You can also download the image from a [registry](https://hub.docker.com/r/uridium/latex/):
 
     make pull
 
-You can also build an image from a Dockerfile:
+or just build the image from a Dockerfile:
 
     make build
-
-### Usage
-
-Simply copy this repository to a directory with tex files and run:
-
-    ./docker-latex/render.sh filename.tex
-
-Also, you might be tempted to add it as git submodule:
-
-    git submodule add git@github.com:uridium/docker-latex.git docker-latex

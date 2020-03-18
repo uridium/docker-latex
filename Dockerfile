@@ -8,6 +8,7 @@ ARG GID=1000
 RUN apt-get update -qq \
     && apt-get dist-upgrade -y -qq \
     && apt-get install -y --no-install-recommends \
+        fonts-font-awesome \
         texlive \
         texlive-base \
         texlive-font-utils \

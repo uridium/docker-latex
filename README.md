@@ -1,5 +1,6 @@
 Docker LaTeX
 --
+[![Docker Hub](https://img.shields.io/docker/cloud/build/uridium/latex.svg)](https://hub.docker.com/r/uridium/latex/)
 
 A trimmed down container for converting LaTeX documents to PDF files. It doesn't use `texlive-full` package.
 

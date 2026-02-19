@@ -1,19 +1,29 @@
-REPO = uridium/latex
-UID = $(shell id -u)
-GID = $(shell id -g)
+REPO ?= ghcr.io/uridium/latex
+UID ?= $(shell id -u)
+GID ?= $(shell id -g)
 
-.PHONY: pull build run clean
+.PHONY: help pull build push run clean
 
-default: run
+help:
+	@echo "Available targets:"
+	@echo "  build    Build the Docker image"
+	@echo "  pull     Pull the latest image from the registry"
+	@echo "  push     Push the image to the registry"
+	@echo "  run      Run the LaTeX compiler inside the container"
+	@echo "  clean    Remove the local image"
+	@echo "  help     Show this help message"
 
 pull:
 	docker pull $(REPO)
 
 build:
-	docker build --build-arg UID=$(UID) --build-arg GID=$(GID) -t $(REPO) .
+	docker build --build-arg UID=$(UID) --build-arg GID=$(GID) -t $(REPO)
+
+push:
+	docker push $(REPO)
 
 run:
-	docker run --rm --network none --name xelatex -u "$(UID):$(GID)" -v "$(shell pwd):/docs:rw" $(REPO) $(f)
+	docker run --rm --network none --user $(UID):$(GID) --volume "$(PWD)":/docs --workdir "/docs" --name latex $(REPO)
 
 clean:
-	docker rmi $(shell docker images $(REPO) -qa)
+	docker rmi $(shell docker images $(REPO) -qa) 2>/dev/null || true

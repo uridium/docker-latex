@@ -1,14 +1,14 @@
 FROM debian:stable-slim
 
-ENV DEBIAN_FRONTEND noninteractive
+LABEL org.opencontainers.image.source=https://github.com/uridium/docker-latex
+LABEL org.opencontainers.image.description="A minimal Docker image for LaTeX based on Debian Stable Slim"
+LABEL org.opencontainers.image.licenses=MIT
 
-ARG UID=1000
-ARG GID=1000
+ENV DEBIAN_FRONTEND=noninteractive
+ARG UID=1000 GID=1000
 
 RUN apt-get update -qq \
-    && apt-get dist-upgrade -y -qq \
     && apt-get install -y --no-install-recommends \
-        fonts-font-awesome \
         texlive \
         texlive-base \
         texlive-font-utils \
@@ -20,17 +20,14 @@ RUN apt-get update -qq \
         texlive-latex-recommended \
         texlive-luatex \
         texlive-xetex \
-    && apt-get purge -y -qq ^tex.*-doc$ \
+        fonts-adobe-sourcesans3 \
+        fonts-font-awesome \
+        make \
+    && apt-get purge -y -qq "^tex.*-doc$" \
     && apt-get clean \
+    && find /usr/share/doc -type f -not -name 'copyright' -delete \
+    && find /usr/share/man -type f -delete \
     && rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
-RUN groupadd -g $UID latex \
-    && useradd -m -u $UID -g latex latex
-
+RUN groupadd -g $UID latex && useradd -m -u $UID -g latex latex
 USER latex
-
-WORKDIR /docs
-
-ENTRYPOINT ["xelatex"]
-
-CMD ["--help"]

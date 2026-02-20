@@ -1,6 +1,7 @@
-REPO ?= ghcr.io/uridium/latex
-UID ?= $(shell id -u)
-GID ?= $(shell id -g)
+REPO    ?= ghcr.io/uridium/latex
+UID     ?= $(shell id -u)
+GID     ?= $(shell id -g)
+WORKDIR  = /docs
 
 .PHONY: help pull build push run clean
 
@@ -23,7 +24,7 @@ push:
 	docker push $(REPO)
 
 run:
-	docker run --rm --network none --user $(UID):$(GID) --volume "$(PWD)":/docs --workdir "/docs" $(REPO)
+	docker run  --interactive --rm --network none --user $(UID):$(GID) --volume "$(PWD)":$(WORKDIR) --workdir "$(WORKDIR)" $(REPO)
 
 clean:
 	docker rmi $(shell docker images $(REPO) -qa) 2>/dev/null || true

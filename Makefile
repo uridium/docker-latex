@@ -17,7 +17,7 @@ pull:
 	docker pull $(REPO)
 
 build:
-	docker build --build-arg UID=$(UID) --build-arg GID=$(GID) -t $(REPO)
+	docker build --build-arg UID=$(UID) --build-arg GID=$(GID) -t $(REPO) .
 
 push:
 	docker push $(REPO)

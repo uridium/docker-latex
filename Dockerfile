@@ -22,7 +22,6 @@ RUN apt-get update -qq \
         texlive-xetex \
         fonts-adobe-sourcesans3 \
         fonts-font-awesome \
-        make \
     && apt-get purge -y -qq "^tex.*-doc$" \
     && apt-get clean \
     && find /usr/share/doc -type f -not -name 'copyright' -delete \

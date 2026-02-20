@@ -23,7 +23,7 @@ push:
 	docker push $(REPO)
 
 run:
-	docker run --rm --network none --user $(UID):$(GID) --volume "$(PWD)":/docs --workdir "/docs" --name latex $(REPO)
+	docker run --rm --network none --user $(UID):$(GID) --volume "$(PWD)":/docs --workdir "/docs" $(REPO)
 
 clean:
 	docker rmi $(shell docker images $(REPO) -qa) 2>/dev/null || true

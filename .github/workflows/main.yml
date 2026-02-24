@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - master
-    paths:
-      - 'Dockerfile'
-      - '.github/workflows/main.yml'
   workflow_dispatch:
 
 env:

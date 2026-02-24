@@ -28,5 +28,5 @@ RUN apt-get update -qq \
     && find /usr/share/man -type f -delete \
     && rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
-RUN groupadd -g $UID latex && useradd -m -u $UID -g latex latex
+RUN groupadd -g $GID latex && useradd -m -u $UID -g latex latex
 USER latex

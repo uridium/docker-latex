@@ -39,8 +39,9 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
-            type=sha,format=short
+            type=raw,value=latest
+            type=sha,format=short,prefix=
+            type=schedule,pattern={{date 'YYYYMMDD'}}
           labels: |
             org.opencontainers.image.source=https://github.com/uridium/docker-latex
             org.opencontainers.image.description="A minimal Docker image for LaTeX based on Debian Stable Slim"
